@@ -12,25 +12,37 @@
 class Solution {
 public:
     // Recursive
-    void helper(TreeNode* root, vector<int> &ans){
-        if (!root) return;
+//     void helper(TreeNode* root, vector<int> &ans){
+//         if (!root) return;
         
-        helper(root->left, ans);
-        ans.push_back(root->val);
-        helper(root->right, ans);
-    }
+//         helper(root->left, ans);
+//         ans.push_back(root->val);
+//         helper(root->right, ans);
+//     }
+//     vector<int> inorderTraversal(TreeNode* root) {
+//         vector<int> ans;
+//         helper(root, ans);
+//         return ans;
+//     }
+    
+    
+    // Iterative
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
-        helper(root, ans);
+        if (!root) return ans;
+        stack<TreeNode*> st;
+        
+        while (root || !st.empty()){
+            while (root){
+                st.push(root);
+                root = root->left;
+            }
+            root = st.top();
+            st.pop();
+            ans.push_back(root->val);
+            root = root->right;
+        }
+        
         return ans;
     }
-    // Iterative
-    // vector<int> inorderTraversal(TreeNode* root) {
-        // vector<int> ans;
-        // if (!root) return ans;
-        // stack<TreeNode*> st;
-        // st.push(root);
-        // while ()
-        // return ans;
-    // }
 };
