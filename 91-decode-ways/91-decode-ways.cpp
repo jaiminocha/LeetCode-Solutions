@@ -3,7 +3,7 @@ public:
     int solve(string &s, int n, string output, int i, vector<int> &dp){
         if (i == n){
             if (output.size() == n) {
-                cout << output << "\n";
+                // cout << output << "\n";
                 return 1;
             }
             return 0;
