@@ -1,12 +1,8 @@
 class Solution {
 public:
-    int solve(string &colors, vector<int> &nt, int n, int i, vector<int> &dp){
+    int solve(string &colors, vector<int> &nt, int n, int i){
         if (i == n){
             return 0;
-        }
-        
-        if (dp[i] != -1){
-            return dp[i];
         }
         
         int time1 = 0;
@@ -20,14 +16,14 @@ public:
                     sum += nt[j + 1];
                     j++;
                 }   
-                time1 = sum - maxVal + solve(colors, nt, n, j + 1, dp);
+                time1 = sum - maxVal + solve(colors, nt, n, j + 1);
             }
-            else time1 = solve(colors, nt, n, i + 1, dp);
+            else time1 = solve(colors, nt, n, i + 1);
         }
-        return dp[i] = time1;
+        return time1;
     }
     int minCost(string colors, vector<int>& neededTime) {
-        vector<int> dp(colors.size(), -1);
-        return solve(colors, neededTime, colors.size(), 0, dp);
+        
+        return solve(colors, neededTime, colors.size(), 0);
     }
 };
