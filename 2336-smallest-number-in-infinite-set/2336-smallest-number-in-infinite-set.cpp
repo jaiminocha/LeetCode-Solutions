@@ -7,17 +7,21 @@ public:
     }
     
     int popSmallest() {
-        int low = INT_MAX;
-        for (auto x : s){
-            low = x;
-            break;
-        }
-        if (low < smallest){
+        // int low = INT_MAX;
+        // for (auto x : s){
+        //     low = x;
+        //     break;
+        // }
+        // if (low < smallest){
+        //     s.erase(low);
+        //     return low;
+        // }
+        if (!s.empty()){
+            int low = *begin(s);
             s.erase(low);
             return low;
         }
-        smallest++;
-        return smallest - 1;
+        return smallest++;
     }
     
     void addBack(int num) {
