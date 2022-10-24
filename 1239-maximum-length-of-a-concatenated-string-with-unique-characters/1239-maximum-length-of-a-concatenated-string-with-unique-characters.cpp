@@ -46,8 +46,6 @@ public:
                 s1.insert(arr[i][idx++]);
             }
             if (flag) continue;
-            int single_len = arr[i].size();
-            ans = max(ans, single_len);
             int res = solve(arr, i + 1, s1);
             //cout << arr[i] << " " << res << endl;
             ans = max(ans, res);
